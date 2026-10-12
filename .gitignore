@@ -1,0 +1,14 @@
+# Builds e arquivos do Visual Studio
+build/
+out/
+.vs/
+CMakeUserPresets.json
+*.user
+*.suo
+
+# Binários gerados
+*.exe
+*.obj
+*.pdb
+*.ilk
+*.o
