@@ -1,6 +1,6 @@
 # OpenGL Curso
 
-Repositório de estudos de OpenGL e processamento gráfico em C++, com o código evoluindo a cada etapa do aprendizado. Serve como diário de estudo e como material de consulta.
+Repositório de estudos de OpenGL e processamento gráfico em C++, com o código acompanhando a cada etapa do aprendizado. Serve como diário de estudo e como material de consulta.
 
 ## Tecnologias
 
@@ -68,11 +68,7 @@ cmake --build build --config Debug
 
 ## Problemas comuns
 
-**F5 não faz nada:** selecione o executável no menu ao lado do ▶. O VS não guarda essa escolha em um clone novo.
-
 **Erro ao configurar o CMake:** confira se a carga de trabalho de C++ está instalada e se a variável `VCPKG_ROOT` aponta para um vcpkg válido.
-
-**Janela preta ou fecha na hora:** verifique se os drivers de vídeo estão atualizados e se o código está pedindo uma versão de OpenGL que sua placa suporta.
 
 ## Referências
 

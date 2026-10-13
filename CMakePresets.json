@@ -1,11 +1,10 @@
 {
   "version": 6,
-
   "configurePresets": [
     {
       "name": "default",
       "generator": "Visual Studio 18 2026",
-      "toolchainFile": "C:/Dev/vcpkg/scripts/buildsystems/vcpkg.cmake",
+      "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "binaryDir": "${sourceDir}/build"
     }
   ]
