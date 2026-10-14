@@ -2,6 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#define GLFW_KEY_ESCAPE   256
+
 using namespace std;
 
 int main() {
@@ -31,9 +33,13 @@ int main() {
     }
 
     while (!glfwWindowShouldClose(window)) {
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.25f, 0.88f, 0.85f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+            glfwTerminate();
+            return 0;
+        }
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
