@@ -40,11 +40,19 @@ int main() {
         -0.5f, 0.5f, 0.0f
     };
 
-    unsigned int VBO; //Usar unsigned int por que o OpenGL define IDs como inteiros sem sinal comaçando em 1
+    unsigned int VAO, VBO; //Usar unsigned int por que o OpenGL define IDs como inteiros sem sinal comaçando em 1
+
     glGenBuffers(1, &VBO); //"Gere 1 ID de buffer e coloque em VBO, temos que passar o endereço da variável &VBO para escrever dentro dela
+    glGenVertexArrays(1, &VAO);
+    
+    glBindVertexArray(VAO); //Começa a gravar oque vem em seguida
+
     glBindBuffer(GL_ARRAY_BUFFER, VBO); //Linka o VBO ao GL_ARRAY_BUFFER, o qual é o buffer para vértices
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW); //Age sobre o buffer vinculado GL_ARRAY_BUFFER que está linkado a VBO, sizeof diz quanto
     //exatamente reservar na VRAM, vertices é um ponteiro para o ínicio dos dados na RAM, GL_STATIC_DRAW é dica de uso para o driver.
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
 
     while (!glfwWindowShouldClose(window)) { //verifica se tem chamada para fechar a janela
         glClearColor(0.25f, 0.80f, 0.85f, 1.0f); //configura um estado do OpenGL informando qual cor será usada na limpeza
