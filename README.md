@@ -1,4 +1,4 @@
-# OpenGL Curso
+# OpenGL
 
 Repositório de estudos de OpenGL e processamento gráfico em C++, com o código acompanhando a cada etapa do aprendizado. Serve como diário de estudo e como material de consulta.
 
