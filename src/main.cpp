@@ -126,7 +126,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT); //Limpeza do buffer
 
         //Denovo máquina de estados, a partir de agora todo desenho obedece shaderProgram, usa estes shaders, 
-        //glUseProgram(shaderProgram);
+        glUseProgram(shaderProgram);
         //Ativa o VAO, ao ativa-lo resgatamos qual VBO usar, e como usar
         glBindVertexArray(VAO);
         //Como montar a forma, cada grupo de 3 vértices vira um triângulo, 0 por qual vértice começar no buffer, 3 quantos vértices usar
