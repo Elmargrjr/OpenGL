@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <cmath>
 
 #define GLFW_KEY_ESCAPE   256
 
@@ -72,8 +73,10 @@ int main() {
     const char* fragmentShaderSource = R"(#version 330 core
         out vec4 FragColor;
 
+        uniform vec4 ourColor;
+
         void main() {
-            FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+            FragColor = ourColor;
         }
     )";
 
@@ -102,6 +105,9 @@ int main() {
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
+
+    int colorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, nullptr, infoLog);
@@ -111,15 +117,21 @@ int main() {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.25f, 0.80f, 0.85f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
+
+        float time = (float)glfwGetTime();
+        float green = sin(time * 2.0f) / 2.0f + 0.5f;
+        float blue = sin(time) / 2.0f + 0.5f;
+        glUniform4f(colorLocation, 0.0f, green, blue, 1.0f);
+
         glBindVertexArray(VAO);
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
 
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
             glfwTerminate();
